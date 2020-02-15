@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.COMPILE_SDK
+    buildToolsVersion Versions.BUILD_TOOLS_VERSION
+    defaultConfig {
+        applicationId "com.droidplusplus.nasapicturesapp"
+        minSdkVersion  Versions.MIN_SDK
+        targetSdkVersion  Versions.TARGET_SDK
+        versionCode Versions.VERSION_CODE
+        versionName Versions.VERSION_NAME
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility = Versions.JAVA_COMPILE_VERSION
+        targetCompatibility = Versions.JAVA_COMPILE_VERSION
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Support Libraries
+    implementation Deps.KOTLIN_STDLIB
+    implementation Deps.APP_COMPAT
+    implementation Deps.CORE_KTX
+    implementation Deps.CONSTRAINT_LAYOUT
+
+    //Material Design
+    implementation Deps.MATERIAL_DESIGN
+
+    //Testing
+    testImplementation Deps.JUNIT
+    androidTestImplementation Deps.JUNIT_EXT
+    androidTestImplementation Deps.ESPRESSO_CORE
+
+    //Arch Components
+    //LiveData and Viewmodel
+    implementation Deps.VIEWMODEL_KTX
+    implementation Deps.LIVEDATA_KTX
+    //Room
+    implementation Deps.ROOM
+    implementation Deps.ROOM_KTX
+    kapt Deps.ROOM_COMPILER
+
+    //Shimmer Layout
+    implementation Deps.SHIMMER_LAYOUT
+
+    //Coroutines
+    implementation Deps.COROUTINES
+    implementation Deps.COROUTINES_ANDROID
+
+    //GLIDE : IMAGE LOADING LIBRARY
+    implementation Deps.GLIDE_IMAGE_LIB
+    kapt Deps.GLIDE_COMPILER
+
+}
