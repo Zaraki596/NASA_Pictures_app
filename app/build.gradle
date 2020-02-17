@@ -49,6 +49,10 @@ dependencies {
     //Material Design
     implementation Deps.MATERIAL_DESIGN
 
+    //MOSHI
+    implementation(Deps.MOSHI_KOTLIN)
+    kapt(Deps.MOSHI_KOTLIN_CODEGEN)
+
     //Testing
     testImplementation Deps.JUNIT
     androidTestImplementation Deps.JUNIT_EXT

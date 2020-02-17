@@ -37,6 +37,9 @@ object Versions {
 
     //IMAGE LOADING
     const val GLIDE = "4.11.0"
+
+    //MOSHI
+    const val MOSHI = "1.9.2"
 }
 
 object Deps {
@@ -73,6 +76,9 @@ object Deps {
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
 
+    //MOSHI
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
+    const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}"
 
 
     //BuildPlugins

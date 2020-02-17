@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.main_screen.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNasaList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/color_bg_grey"
