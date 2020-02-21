@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 class NasaViewModel(private val nasaRepository: NasaRepositoryImpl) : ViewModel() {
 
     //Here creating mutable version to pass the data
-    private val mNasaLiveData : MutableLiveData<List<NasaResponse>> = MutableLiveData()
+    private val _nasaLiveData : MutableLiveData<List<NasaResponse>> = MutableLiveData()
     //To observe that data we use this
-    val nasaLiveData :LiveData<List<NasaResponse>> = mNasaLiveData
+    val nasaLiveData :LiveData<List<NasaResponse>> = _nasaLiveData
 
 
     fun getNasaData() {
         viewModelScope.launch {
-            mNasaLiveData.postValue(nasaRepository.getNasaResponse().value)
+            _nasaLiveData.postValue(nasaRepository.getNasaResponse().value)
         }
     }
 
