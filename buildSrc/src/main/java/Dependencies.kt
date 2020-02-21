@@ -8,8 +8,14 @@ object Versions {
 
     //Testing Version
     const val JUNIT = "4.12"
+    const val JUNIT_KTX = "1.1.1"
     const val JUNIT_EXT = "1.1.1"
     const val ESPRESSO_CORE = "3.2.0"
+    const val ARCH_CORE_TESTING = "2.1.0"
+    const val ANDROIDX_CORE_TESTING = "1.2.0"
+    const val HAMCREST = "1.3"
+    const val ROBOELECTRIC = "4.3.1"
+
 
     //UI Utils Version
     const val CARD_VIEW = "1.0.0"
@@ -54,12 +60,20 @@ object Deps {
     const val MATERIAL_DESIGN = "com.google.android.material:material:${Versions.MATERIAL_DESIGN}"
 
 
-
     // Testing
+    //Local Unit Testing
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val JUNIT_KTX = "androidx.test.ext:junit-ktx:${Versions.JUNIT_KTX}"
+    const val HAMCREST = "org.hamcrest:hamcrest-all:${Versions.HAMCREST}"
+    const val ANDROIDX_TESTING = "androidx.test:core-ktx:${Versions.ANDROIDX_CORE_TESTING}"
+    const val ROBOELECTRIC = "org.robolectric:robolectric:${Versions.ROBOELECTRIC}"
+    const val ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.ARCH_CORE_TESTING}"
+    const val COROUTINES_TESTING =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES}"
+
+    // Instrumented testing
     const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.JUNIT_EXT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
-
 
 
     //UI elements
@@ -72,9 +86,6 @@ object Deps {
     const val LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE}"
     const val VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
     const val LIVEDATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}"
-    const val ROOM = "androidx.room:room-runtime:${Versions.ROOM}"
-    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
-    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
 
     //MOSHI
     const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
@@ -82,21 +93,20 @@ object Deps {
 
 
     //BuildPlugins
-    const val ANDROID_GRADLE_PLUGIN = "com.android.tools.build:gradle:${Versions.ANDROID_GRADLE_VERSION}"
+    const val ANDROID_GRADLE_PLUGIN =
+        "com.android.tools.build:gradle:${Versions.ANDROID_GRADLE_VERSION}"
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
-
 
 
     //Coroutines
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINES}"
-    const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES}"
-
+    const val COROUTINES_ANDROID =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES}"
 
 
     //GLIDE
     const val GLIDE_IMAGE_LIB = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
-
 
 
 }

@@ -11,8 +11,8 @@ android {
     buildToolsVersion Versions.BUILD_TOOLS_VERSION
     defaultConfig {
         applicationId "com.droidplusplus.nasapicturesapp"
-        minSdkVersion  Versions.MIN_SDK
-        targetSdkVersion  Versions.TARGET_SDK
+        minSdkVersion Versions.MIN_SDK
+        targetSdkVersion Versions.TARGET_SDK
         versionCode Versions.VERSION_CODE
         versionName Versions.VERSION_NAME
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -25,6 +25,7 @@ android {
     }
     dataBinding {
         enabled = true
+        enabledForTests = true
     }
 
     compileOptions {
@@ -34,6 +35,10 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    testOptions.unitTests {
+        includeAndroidResources = true
+
     }
 }
 
@@ -54,18 +59,25 @@ dependencies {
     kapt(Deps.MOSHI_KOTLIN_CODEGEN)
 
     //Testing
+    //Local Unit Testing
     testImplementation Deps.JUNIT
+    testImplementation Deps.HAMCREST
+    testImplementation Deps.JUNIT_KTX
+    testImplementation Deps.ANDROIDX_TESTING
+    testImplementation Deps.ROBOELECTRIC
+    testImplementation Deps.ARCH_CORE_TESTING
+    testImplementation Deps.COROUTINES_TESTING
+
+    //Instrumentetd Testing
     androidTestImplementation Deps.JUNIT_EXT
     androidTestImplementation Deps.ESPRESSO_CORE
+
 
     //Arch Components
     //LiveData and Viewmodel
     implementation Deps.VIEWMODEL_KTX
     implementation Deps.LIVEDATA_KTX
-    //Room
-    implementation Deps.ROOM
-    implementation Deps.ROOM_KTX
-    kapt Deps.ROOM_COMPILER
+
 
     //Shimmer Layout
     implementation Deps.SHIMMER_LAYOUT
