@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.droidplusplus.nasapicturesapp.R
 import com.droidplusplus.nasapicturesapp.data.model.NasaResponse
-import kotlinx.android.synthetic.main.row_item_layout.view.*
+import kotlinx.android.synthetic.main.row_item_list.view.*
 
 class NasaListAdapter :
     ListAdapter<NasaResponse, NasaListAdapter.NasaViewHolder>(NasaResponseDC()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = NasaViewHolder(
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_item_layout, parent, false)
+            .inflate(R.layout.row_item_list, parent, false)
     )
 
     override fun onBindViewHolder(holder: NasaViewHolder, position: Int) {
@@ -48,10 +48,6 @@ class NasaListAdapter :
             Glide.with(this).load(item.imageUrl).placeholder(android.R.drawable.ic_menu_upload)
                 .into(ivItemImage)
         }
-    }
-
-    interface Interaction {
-
     }
 
     private class NasaResponseDC : DiffUtil.ItemCallback<NasaResponse>() {

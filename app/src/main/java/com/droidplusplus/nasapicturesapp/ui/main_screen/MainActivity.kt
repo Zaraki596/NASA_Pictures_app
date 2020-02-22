@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         //Observing the data and applying the appropriate data condition
         nasaViewModel.nasaLiveData.observe(this, Observer {
             it?.let {
-                nasaListAdapter.submitList(it)
+                nasaListAdapter.swapData(it)
             }
         })
 

@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ItemTitle">
+    <style name="ItemTitleStyle">
         <item name="android:textSize">16sp</item>
         <item name="android:padding">4dp</item>
         <item name="android:lines">2</item>
@@ -16,6 +16,19 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@color/color_transparent_grey</item>
+    </style>
+
+    <style name="DetailItemStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="DetailItemTitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 </resources>
