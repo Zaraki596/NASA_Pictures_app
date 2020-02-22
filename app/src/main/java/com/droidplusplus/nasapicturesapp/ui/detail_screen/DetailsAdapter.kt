@@ -1,8 +1,7 @@
-package com.droidplusplus.nasapicturesapp.ui.main_screen
+package com.droidplusplus.nasapicturesapp.ui.detail_screen
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,16 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.droidplusplus.nasapicturesapp.R
 import com.droidplusplus.nasapicturesapp.data.model.NasaResponse
-import kotlinx.android.synthetic.main.row_item_list.view.*
+import kotlinx.android.synthetic.main.row_item_detail.view.*
 
-class NasaListAdapter :
-    ListAdapter<NasaResponse, NasaListAdapter.NasaViewHolder>(NasaResponseDC()) {
-
-    var itemClickListener: (position: Int) -> Unit = {}
+class DetailsAdapter :
+    ListAdapter<NasaResponse, DetailsAdapter.NasaViewHolder>(NasaResponseDC()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = NasaViewHolder(
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_item_list, parent, false)
+            .inflate(R.layout.row_item_detail, parent, false)
     )
 
     override fun onBindViewHolder(holder: NasaViewHolder, position: Int) {
@@ -32,20 +29,16 @@ class NasaListAdapter :
 
     inner class NasaViewHolder(
         itemView: View
-    ) : RecyclerView.ViewHolder(itemView), OnClickListener {
-
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-
-            if (adapterPosition == RecyclerView.NO_POSITION) return
-            itemClickListener.invoke(adapterPosition)
-        }
+    ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: NasaResponse) = with(itemView) {
             tvTitle.text = item.title
+            tvDate.text = item.date
+            //Handle null check to make the view gone
+            item.copyright?.let {
+                tvCopyright.text = it
+            } ?: kotlin.run { tvCopyright.visibility = View.GONE }
+            tvDetails.text = item.explanation
             Glide.with(this).load(item.imageUrl).placeholder(android.R.drawable.ic_menu_upload)
                 .into(ivItemImage)
         }

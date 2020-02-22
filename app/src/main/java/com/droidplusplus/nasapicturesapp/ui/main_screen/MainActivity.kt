@@ -1,5 +1,6 @@
 package com.droidplusplus.nasapicturesapp.ui.main_screen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -8,6 +9,7 @@ import com.droidplusplus.nasapicturesapp.R
 import com.droidplusplus.nasapicturesapp.data.NasaRepositoryImpl
 import com.droidplusplus.nasapicturesapp.ui.NasaViewModel
 import com.droidplusplus.nasapicturesapp.ui.NasaViewModelFactory
+import com.droidplusplus.nasapicturesapp.ui.detail_screen.DetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -44,7 +46,19 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        setUpListener()
 
+
+    }
+
+    private fun setUpListener() {
+        nasaListAdapter.itemClickListener = this::handleItemClick
+    }
+
+    private fun handleItemClick(position: Int) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("position", position)
+        startActivity(intent)
     }
 
 
