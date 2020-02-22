@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.droidplusplus.nasapicturesapp.data.NasaRepositoryImpl
+import com.droidplusplus.nasapicturesapp.data.NasaRepository
 import com.droidplusplus.nasapicturesapp.data.model.NasaResponse
 import kotlinx.coroutines.launch
 
-class NasaViewModel(private val nasaRepository: NasaRepositoryImpl) : ViewModel() {
+class NasaViewModel(private val nasaRepository: NasaRepository) : ViewModel() {
 
     //Here creating mutable version to pass the data
     private val _nasaLiveData : MutableLiveData<List<NasaResponse>> = MutableLiveData()

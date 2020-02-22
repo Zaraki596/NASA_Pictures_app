@@ -8,10 +8,7 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 
-class NasaRepositoryImpl(private val context: Context,
-    private val moshi: Moshi = MoshiFactory.getInstance()) : NasaRepository {
-
-
+class NasaRepositoryImpl(private val context: Context) : NasaRepository {
 
 
     override suspend fun getNasaResponse(): LiveData<List<NasaResponse>> {
@@ -20,10 +17,10 @@ class NasaRepositoryImpl(private val context: Context,
          * Created a new listype because moshi.apapter dosen't take directly the List<NasaRespons> as a parameter
          * */
         val listType = Types.newParameterizedType(List::class.java, NasaResponse::class.java)
-        val adapter: JsonAdapter<List<NasaResponse>> = moshi.adapter(listType)
+        val adapter: JsonAdapter<List<NasaResponse>> = getMoshiInstance().adapter(listType)
 
         val nasaJson = context.assets.open("data.json").bufferedReader().use { it.readText() }
-        val response = adapter.fromJson(nasaJson)
+        val response = adapter?.fromJson(nasaJson)
 
         nasaResponseLiveData.value = response
 
@@ -31,13 +28,15 @@ class NasaRepositoryImpl(private val context: Context,
     }
 
 
-
     /**
      * Creating a static object to get the instance of the moshi builder
      * */
-    internal object MoshiFactory{
-        val moshi = Moshi.Builder().build()
+    companion object MoshiFactory {
+        private val moshi: Moshi? = null
 
-        fun getInstance() = moshi
+        // Singleton moshi initialization
+        fun getMoshiInstance(): Moshi {
+            return moshi ?: Moshi.Builder().build()
+        }
     }
 }

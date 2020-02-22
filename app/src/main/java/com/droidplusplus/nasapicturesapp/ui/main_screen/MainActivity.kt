@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         nasaViewModel = ViewModelProvider(
             this,
             NasaViewModelFactory(
-                NasaRepositoryImpl(this, NasaRepositoryImpl.MoshiFactory.getInstance())
+                NasaRepositoryImpl(this)
             )
         ).get(NasaViewModel::class.java)
 
