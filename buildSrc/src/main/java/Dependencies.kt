@@ -1,7 +1,7 @@
 object Versions {
     //Support Version
     const val KOTLIN = "1.3.61"
-    const val CONSTRAINT_LAYOUT = "1.1.3"
+    const val CONSTRAINT_LAYOUT = "2.0.0-beta4"
     const val APPCOMPAT = "1.1.0"
     const val CORE_KTX = "1.2.0"
     const val ANDROID_GRADLE_VERSION = "3.5.3"
@@ -15,13 +15,14 @@ object Versions {
     const val ANDROIDX_CORE_TESTING = "1.2.0"
     const val HAMCREST = "1.3"
     const val ROBOELECTRIC = "4.3.1"
+    const val MOCKK = "1.9.3"
 
 
     //UI Utils Version
     const val CARD_VIEW = "1.0.0"
     const val RECYCLER_VIEW = "1.1.0"
-    const val SHIMMER_LAYOUT = "2.1.0"
     const val MATERIAL_DESIGN = "1.2.0-alpha04"
+    const val VIEW_PAGER_2 = "1.0.0"
 
     //Arch Components
     const val LIFECYCLE = "2.2.0"
@@ -70,6 +71,7 @@ object Deps {
     const val ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.ARCH_CORE_TESTING}"
     const val COROUTINES_TESTING =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES}"
+    const val MOCKS = "io.mockk:mockk:${Versions.MOCKK}"
 
     // Instrumented testing
     const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.JUNIT_EXT}"
@@ -79,7 +81,7 @@ object Deps {
     //UI elements
     const val CARD_VIEW = "androidx.cardview:cardview:${Versions.CARD_VIEW}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.RECYCLER_VIEW}"
-    const val SHIMMER_LAYOUT = "io.supercharge:shimmerlayout:${Versions.SHIMMER_LAYOUT}"
+    const val VIEW_PAGER_2 = "androidx.viewpager2:viewpager2:${Versions.VIEW_PAGER_2}"
 
 
     //Arch Components

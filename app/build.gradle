@@ -54,6 +54,9 @@ dependencies {
     //Material Design
     implementation Deps.MATERIAL_DESIGN
 
+    //VIEWPAGER2
+    implementation Deps.VIEW_PAGER_2
+
     //MOSHI
     implementation(Deps.MOSHI_KOTLIN)
     kapt(Deps.MOSHI_KOTLIN_CODEGEN)
@@ -67,6 +70,7 @@ dependencies {
     testImplementation Deps.ROBOELECTRIC
     testImplementation Deps.ARCH_CORE_TESTING
     testImplementation Deps.COROUTINES_TESTING
+    testImplementation Deps.MOCKS
 
     //Instrumentetd Testing
     androidTestImplementation Deps.JUNIT_EXT
@@ -78,9 +82,6 @@ dependencies {
     implementation Deps.VIEWMODEL_KTX
     implementation Deps.LIVEDATA_KTX
 
-
-    //Shimmer Layout
-    implementation Deps.SHIMMER_LAYOUT
 
     //Coroutines
     implementation Deps.COROUTINES
