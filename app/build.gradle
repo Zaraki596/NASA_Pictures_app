@@ -23,10 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-        enabledForTests = true
-    }
 
     compileOptions {
         sourceCompatibility = Versions.JAVA_COMPILE_VERSION
@@ -53,6 +49,9 @@ dependencies {
 
     //Material Design
     implementation Deps.MATERIAL_DESIGN
+
+    //LOTTIE
+    implementation Deps.SWIPE_REFRESH_LAYOUT
 
     //VIEWPAGER2
     implementation Deps.VIEW_PAGER_2

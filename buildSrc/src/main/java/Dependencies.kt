@@ -47,6 +47,9 @@ object Versions {
 
     //MOSHI
     const val MOSHI = "1.9.2"
+
+    //SWIPE_REFRESH_LAYOUT
+    const val SWIPE_REFRESH_LAYOUT = "1.0.0"
 }
 
 object Deps {
@@ -82,6 +85,9 @@ object Deps {
     const val CARD_VIEW = "androidx.cardview:cardview:${Versions.CARD_VIEW}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.RECYCLER_VIEW}"
     const val VIEW_PAGER_2 = "androidx.viewpager2:viewpager2:${Versions.VIEW_PAGER_2}"
+
+    //SWIPE_REFRESH_LAYOUT
+   const val SWIPE_REFRESH_LAYOUT = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}"
 
 
     //Arch Components

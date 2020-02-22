@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.droidplusplus.nasapicturesapp.R
 import com.droidplusplus.nasapicturesapp.data.model.NasaResponse
@@ -39,7 +40,11 @@ class DetailsAdapter :
                 tvCopyright.text = it
             } ?: kotlin.run { tvCopyright.visibility = View.GONE }
             tvDetails.text = item.explanation
-            Glide.with(this).load(item.imageUrl).placeholder(android.R.drawable.ic_menu_upload)
+            Glide.with(this).load(item.imageUrl).placeholder(CircularProgressDrawable(itemView.context).apply {
+                strokeWidth = 10f
+                centerRadius = 80f
+                start()
+            })
                 .into(ivItemImage)
         }
     }

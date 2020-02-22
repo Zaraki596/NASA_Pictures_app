@@ -1,40 +1,40 @@
 package com.droidplusplus.nasapicturesapp.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.droidplusplus.nasapicturesapp.data.NasaRepositoryImpl
-import com.droidplusplus.nasapicturesapp.getOrAwaitValue
+import androidx.lifecycle.MutableLiveData
+import com.droidplusplus.nasapicturesapp.data.NasaRepository
+import com.droidplusplus.nasapicturesapp.data.model.NasaResponse
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
-class NasaViewModelTest{
+class NasaViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     lateinit var nasaViewModel: NasaViewModel
 
+    @MockK
+    lateinit var repo: NasaRepository
+
     @Before
-    fun setUpViewModel(){
+    fun setUpViewModel() {
+        MockKAnnotations.init(this)
         // Given a fresh ViewModel
-        nasaViewModel = NasaViewModel(NasaRepositoryImpl(ApplicationProvider.getApplicationContext(), NasaRepositoryImpl.MoshiFactory.getInstance()))
+        nasaViewModel = NasaViewModel(repo)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun `check if the returned data is not null`() = runBlockingTest {
-        // When adding a new Response Data
-        nasaViewModel.getNasaData()
-
-        val value = nasaViewModel.nasaLiveData.getOrAwaitValue()
-
-        assertNotNull(value)
-
+    fun `check if the expected response from the given fake response`() = runBlockingTest {
+        val expectedResponse = MutableLiveData(listOf(NasaResponse("hi", "2", "ex", null, "a")))
+        coEvery { repo.getNasaResponse() } returns (expectedResponse)
     }
 
 }

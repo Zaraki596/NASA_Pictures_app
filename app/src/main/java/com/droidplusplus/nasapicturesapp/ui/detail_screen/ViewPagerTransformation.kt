@@ -2,42 +2,54 @@ package com.droidplusplus.nasapicturesapp.ui.detail_screen
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
-import kotlin.math.abs
+
+private const val MIN_SCALE = 0.85f
+private const val MIN_ALPHA = 0.9f
 
 
+/**
+ * Zoom-out page transformer courtesy https://developer.android.com/training/animation/screen-slide-2#zoom-out
+* */
 class ViewPagerTransformation : ViewPager2.PageTransformer {
-
 
     override fun transformPage(
         page: View,
         position: Float
     ) {
-        when {
-            position < -1 -> {    // [-Infinity,-1)
-                // This page is way off-screen to the left.
-                page.alpha = 0f
 
-            }
-            position <= 0 -> {    // [-1,0]
-                page.alpha = 1f
-                page.translationX = 0f
-                page.scaleX = 1f
-                page.scaleY = 1f
+        page.apply {
+            val pageWidth = width
+            val pageHeight = height
+            when {
+                position < -1 -> { // [-Infinity,-1)
+                    // This page is way off-screen to the left.
+                    alpha = 0f
+                }
+                position <= 1 -> { // [-1,1]
+                    // Modify the default slide transition to shrink the page as well
+                    val scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position))
+                    val vertMargin = pageHeight * (1 - scaleFactor) / 2
+                    val horzMargin = pageWidth * (1 - scaleFactor) / 2
+                    translationX = if (position < 0) {
+                        horzMargin - vertMargin / 2
+                    } else {
+                        horzMargin + vertMargin / 2
+                    }
 
-            }
-            position <= 1 -> {    // (0,1]
-                page.translationX = -position * page.width
-                page.alpha = 1 - abs(position)
-                page.scaleX = 1 - abs(position)
-                page.scaleY = 1 - abs(position)
+                    // Scale the page down (between MIN_SCALE and 1)
+                    scaleX = scaleFactor
+                    scaleY = scaleFactor
 
-            }
-            else -> {    // (1,+Infinity]
-                // This page is way off-screen to the right.
-                page.alpha = 0f
+                    // Fade the page relative to its size.
+                    alpha = (MIN_ALPHA +
+                            (((scaleFactor - MIN_SCALE) / (1 - MIN_SCALE)) * (1 - MIN_ALPHA)))
+                }
+                else -> { // (1,+Infinity]
+                    // This page is way off-screen to the right.
+                    alpha = 0f
+                }
 
             }
         }
-
     }
 }
