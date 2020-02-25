@@ -4,7 +4,7 @@ object Versions {
     const val CONSTRAINT_LAYOUT = "2.0.0-beta4"
     const val APPCOMPAT = "1.1.0"
     const val CORE_KTX = "1.2.0"
-    const val ANDROID_GRADLE_VERSION = "3.5.3"
+    const val ANDROID_GRADLE_VERSION = "3.6.0"
 
     //Testing Version
     const val JUNIT = "4.12"

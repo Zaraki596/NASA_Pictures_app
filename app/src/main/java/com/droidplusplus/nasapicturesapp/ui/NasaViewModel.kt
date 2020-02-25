@@ -18,7 +18,7 @@ class NasaViewModel(private val nasaRepository: NasaRepository) : ViewModel() {
 
     fun getNasaData() {
         viewModelScope.launch {
-            _nasaLiveData.postValue(nasaRepository.getNasaResponse().value)
+            _nasaLiveData.postValue(nasaRepository.getNasaResponse())
         }
     }
 
